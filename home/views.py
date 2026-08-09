@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+import products
+
 # Create your views here.
 
 def index(request):
