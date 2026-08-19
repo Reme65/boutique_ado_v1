@@ -61,14 +61,22 @@ body {
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white; 
-       z-index: -1;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
 }
+
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
+
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -79,7 +87,6 @@ body {
 }
 
 /* fixed top navbar only on medium and up */
-
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -94,7 +101,7 @@ body {
     }
 }
 
-/* pad the top a bitwhen nav bar is collapsed on mobile */
+/* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
