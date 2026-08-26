@@ -6,6 +6,7 @@ from django.contrib import messages
 from .forms import OrderForm
 from bag.contexts import bag_contents
 
+
 def checkout(request):
     bag = request.session.get('bag', {})
     if not bag:
@@ -15,13 +16,14 @@ def checkout(request):
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
     stripe_total = round(total * 100)
-    
+
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
         'stripe_public_key': os.environ.get('STRIPE_PUBLIC_KEY'),
         'client_secret': os.environ.get('STRIPE_SECRET_KEY'),
+        'stripe_total': stripe_total,
     }
 
     return render(request, template, context)
