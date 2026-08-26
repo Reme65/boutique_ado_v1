@@ -4,7 +4,7 @@ from urllib import request
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 import stripe
-FROM DJANGO.conf import settings
+from django.conf import settings
 
 from .forms import OrderForm
 from bag.contexts import bag_contents
@@ -32,8 +32,8 @@ def checkout(request):
 
     if not stripe_public_key:
         messages.warning(
-            request, 'Stripe public key is missing. 
-                Did you forget to set it in your environment?'
+            request,
+            'Stripe public key is missing. Did you forget to set it in your environment?'
         )
     template = 'checkout/checkout.html'
     context = {
