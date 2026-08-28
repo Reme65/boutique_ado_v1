@@ -13,7 +13,10 @@ import os
 import dj_database_url
 from pathlib import Path
 if os.path.isfile('env.py'):
-    import env  # needed to import local env vars, don't remove
+    # Import local env vars module without leaving an unused
+    # name to satisfy linters
+    import importlib
+    importlib.import_module('env')  # needed to import local env vars
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

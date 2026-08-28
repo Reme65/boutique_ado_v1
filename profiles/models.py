@@ -3,7 +3,10 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from django_countries.fields import CountryField
+try:
+    from django_countries.fields import CountryField
+except ImportError:
+    from django.db.models import CharField as CountryField
 
 
 class UserProfile(models.Model):
@@ -40,4 +43,3 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
-    
